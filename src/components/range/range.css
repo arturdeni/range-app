@@ -1,10 +1,8 @@
-/* src/components/range/Range.css */
-
 .range-slider {
   position: relative;
-  width: 80%; /* Ancho al 80% */
+  width: 80%;
   height: 30px;
-  margin: auto; /* Centrado horizontalmente */
+  margin: 50px auto;
   user-select: none;
 }
 

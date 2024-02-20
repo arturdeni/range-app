@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Range from "../components/range/range";
-import "./exercise1.css";
 
 const Exercise1 = () => {
-  const [minMax, setMinMax] = useState({ min: null, max: null }); // Inicializado como null
+  const [minMax, setMinMax] = useState({ min: null, max: null });
 
   useEffect(() => {
-    // Simulación de respuesta de la API
-    const apiResponse = { min: 19, max: 1000 };
-    setMinMax(apiResponse);
+    fetch("http://demo3389763.mockable.io/range-value")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.minValue !== undefined && data.maxValue !== undefined) {
+          setMinMax({ min: data.minValue, max: data.maxValue });
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+      });
   }, []);
 
-  // Renderizar el componente Range solo si min y max no son null
   return (
     <div>
       <h1>Exercise 1</h1>
